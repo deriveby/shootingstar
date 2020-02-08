@@ -34,26 +34,57 @@
         var canvas = document.getElementById("renderCanvas"); // Get the canvas element 
         var engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
 
-        /******* Add the create scene function ******/
-        var createScene = function () {
+var createScene = function () {
+    // This creates a basic Babylon Scene object (non-mesh)
+    var scene = new BABYLON.Scene(engine);
 
-            // Create the scene space
-            var scene = new BABYLON.Scene(engine);
+    // This creates and positions a free camera (non-mesh)
+    var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 5, -10), scene);
 
-            // Add a camera to the scene and attach it to the canvas
-            var camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, Math.PI / 2, 2, new BABYLON.Vector3(0,0,5), scene);
-            camera.attachControl(canvas, true);
+    // This targets the camera to scene origin
+    camera.setTarget(BABYLON.Vector3.Zero());
 
-            // Add lights to the scene
-            var light1 = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 1, 0), scene);
-            var light2 = new BABYLON.PointLight("light2", new BABYLON.Vector3(0, 1, -1), scene);
+    // This attaches the camera to the canvas
+    camera.attachControl(canvas, true);
 
-            // Add and manipulate meshes in the scene
-            var sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter:2}, scene);
+    // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
+    var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
 
-            return scene;
-        };
-        /******* End of the create scene function ******/    
+    // Default intensity is 1. Let's dim the light a small amount
+    light.intensity = 0.7;
+    
+    var star = createStar("star", 6, 2, true, scene);
+    
+    return scene;
+
+};
+
+var createStar =function (name, points, depth, updatable, scene){
+    var temp = BABYLON.MeshBuilder.CreateDisc("temp", {radius: 1, tessellation: points, updatable: false}, scene);
+    var inner_verts = temp.getVerticesData(BABYLON.VertexBuffer.PositionKind);
+    temp.rotation.z = Math.PI/points;
+    temp.scaling.x = 3;
+    temp.scaling.y = 3;
+    temp.bakeCurrentTransformIntoVertices();
+    var outer_verts = temp.getVerticesData(BABYLON.VertexBuffer.PositionKind);
+    temp.dispose();
+    var verts = [];
+    for (let i=3;i<points*3+3;i+=3){
+      verts.push(new BABYLON.Vector2(
+        inner_verts[i],
+        inner_verts[i+1])
+      );
+      verts.push(new BABYLON.Vector2(
+        outer_verts[i],
+        outer_verts[i+1])
+      );
+    }
+
+    var s = new BABYLON.PolygonMeshBuilder(name, verts, scene);
+    var star = s.build(updatable, depth);
+
+    return star;
+}
 
         var scene = createScene(); //Call the createScene function
 
