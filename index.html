@@ -54,14 +54,58 @@ var createScene = function () {
     // Default intensity is 1. Let's dim the light a small amount
     light.intensity = 0.7;
     
-    var star = createStar("star", 6, 2, true, scene);
     
+    var starVerts = createStarVerts(5); // Vec2[]
+    var star = new BABYLON.PolygonMeshBuilder("star", starVerts, scene).build(true, 1);
+    var platformVerts = createPlatformVerts();
+
+    var platformBuilder = new BABYLON.PolygonMeshBuilder("platform", platformVerts, scene);
+    platformBuilder.addHole(starVerts);
+
+    var platforms = [platformBuilder.build(true, 1),platformBuilder.build(true, 1),platformBuilder.build(true, 1)]
+
+    platforms[1].position.y = -10;
+    platforms[2].position.y = -20;
+    
+    var starVelocity = 0.0;
+    
+    var gamepadManager = new BABYLON.GamepadManager();
+    gamepadManager.onGamepadConnectedObservable.add((gamepad, state)=>{   
+        gamepad.onleftstickchanged((values)=>{
+            console.log(values.x);
+            if (values.x > 0.25 || values.x < -0.25){
+                starVelocity = values.x*0.05;
+            } else {
+                starVelocity = 0.0;
+            }
+        })
+    });
+
+    scene.onBeforeRenderObservable.add(()=>{
+        star.rotation.y += starVelocity;
+        platforms.forEach(function(platform){
+            platform.position.y += 0.1;
+            if (platform.position.y >= 10) { platform.position.y = -20 }
+        });
+
+    })
+
     return scene;
 
 };
 
-var createStar =function (name, points, depth, updatable, scene){
-    var temp = BABYLON.MeshBuilder.CreateDisc("temp", {radius: 1, tessellation: points, updatable: false}, scene);
+var createPlatformVerts = function (){
+    var discMB = BABYLON.MeshBuilder.CreateDisc("disc", {radius: 4, tessellation: 24, updatable: false}, null);
+    var disc = discMB.getVerticesData(BABYLON.VertexBuffer.PositionKind);
+    
+    discMB.dispose();
+    var verts = [];
+    for (let i=0;i<24;i++){ verts[i] = new BABYLON.Vector2(disc[i*3+3], disc[i*3+1+3])}
+    return verts;
+}
+
+var createStarVerts =function (points){
+    var temp = BABYLON.MeshBuilder.CreateDisc("temp", {radius: 1, tessellation: points, updatable: false}, null);
     var inner_verts = temp.getVerticesData(BABYLON.VertexBuffer.PositionKind);
     temp.rotation.z = Math.PI/points;
     temp.scaling.x = 3;
@@ -81,10 +125,7 @@ var createStar =function (name, points, depth, updatable, scene){
       );
     }
 
-    var s = new BABYLON.PolygonMeshBuilder(name, verts, scene);
-    var star = s.build(updatable, depth);
-
-    return star;
+    return verts;
 }
 
         var scene = createScene(); //Call the createScene function
