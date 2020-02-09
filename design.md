@@ -18,7 +18,7 @@ Right and Left analog stick adds rotational velocity in direction pressed. The t
 
 Horizontal movement spins the star
 
-*Breath with
+*Breath with*
 
 #### Gamepad Controls
 
