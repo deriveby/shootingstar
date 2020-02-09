@@ -8,23 +8,23 @@ Holes / platforms have some kind of randomness to increase difficulty over time
 
 ## Controls
 
-Rotates with
+*Rotates with*
 
-?GamePad Controls?
+#### GamePad Controls
 
 Right and Left analog stick adds rotational velocity in direction pressed. The total speed is calculated by adding both sticks velocity together(or subtracting if the sticks are held in contrary directions).
 
-?Mouse Controls?
+#### Mouse Controls
 
 Horizontal movement spins the star
 
-Breath with
+*Breath with
 
-?Gamepad Controls?
+#### Gamepad Controls
 
 L and R trigger
 
-?Mouse Controls?
+#### Mouse Controls
 
 Vertical movement breathes in and out
 
