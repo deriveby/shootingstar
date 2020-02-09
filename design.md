@@ -12,7 +12,7 @@ Holes / platforms have some kind of randomness to increase difficulty over time
 
 #### GamePad Controls
 
-Right and Left analog stick adds rotational velocity in direction pressed. The total speed is calculated by adding both sticks velocity together(or subtracting if the sticks are held in contrary directions).
+Right and Left analog stick adds rotational velocity to directions pressed. The total speed is calculated by adding both sticks velocity together(or subtracting if the sticks are held in contrary directions).
 
 #### Mouse Controls
 
