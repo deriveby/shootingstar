@@ -32,6 +32,10 @@ Vertical movement breathes in and out
 Background examples based on straight lines
 ![alt text](https://api.pcloud.com/getpubthumb?code=XZIjiWkZ1qWhKTld4vfUEWC5R31UOYSrsAE7&linkpassword=undefined&size=1023x474&crop=0&type=auto " ")
 ![alt text](https://api.pcloud.com/getpubthumb?code=XZXuiWkZgdKiGhj9Nh08WHyCqqAWNfi4M98V&linkpassword=undefined&size=322x156&crop=0&type=auto " ")
-!https://api.pcloud.com/getpubthumb?code=XZLuiWkZ788EOlSSlAmPoYYLTjERokHKJS5X&linkpassword=undefined&size=194x259&crop=0&type=auto
-This was sort of what I was thinking except only the vertical lines.
+![alt text](https://api.pcloud.com/getpubthumb?code=XZLuiWkZ788EOlSSlAmPoYYLTjERokHKJS5X&linkpassword=undefined&size=194x259&crop=0&type=auto
+ " ")
+![alt text]( https://api.pcloud.com/getpubthumb?code=XZguiWkZeFn98DlIOiR2ky3nXDs7J5tHwy5y&linkpassword=undefined&size=320x240&crop=0&type=auto "")
+![alt text](https://api.pcloud.com/getpubthumb?code=XZluiWkZhgyByvpmAQmawXNdiJhA9m5skOfX&linkpassword=undefined&size=850x478&crop=0&type=auto "")
+ This was sort of what I was thinking except only the vertical lines.
+ 
 ## Audio
