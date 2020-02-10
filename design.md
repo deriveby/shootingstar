@@ -30,7 +30,7 @@ Vertical movement breathes in and out
 
 ## Visuals
 Background examples based on straight lines
-![alt text](https://my.pcloud.com/publink/show?code=XZIjiWkZ1qWhKTld4vfUEWC5R31UOYSrsAE7 "Logo Title Text 1")
+![alt text](https://api.pcloud.com/getpubthumb?code=XZIjiWkZ1qWhKTld4vfUEWC5R31UOYSrsAE7&linkpassword=undefined&size=1023x474&crop=0&type=auto "Logo Title Text 1")
 
 This was sort of what I was thinking except only the vertical lines.
 ## Audio
