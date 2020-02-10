@@ -36,6 +36,6 @@ Background examples based on straight lines
  " ")
 ![alt text]( https://api.pcloud.com/getpubthumb?code=XZguiWkZeFn98DlIOiR2ky3nXDs7J5tHwy5y&linkpassword=undefined&size=320x240&crop=0&type=auto "")
 ![alt text](https://api.pcloud.com/getpubthumb?code=XZluiWkZhgyByvpmAQmawXNdiJhA9m5skOfX&linkpassword=undefined&size=850x478&crop=0&type=auto "")
- This was sort of what I was thinking except only the vertical lines.
+
  
 ## Audio
